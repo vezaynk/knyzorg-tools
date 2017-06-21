@@ -1,13 +1,11 @@
-#!/bin/bash -       
+#!/bin/bash
 #title           :secureproxy.sh
-#description     :Generates SSL certs for nginx automatically and 
-proxies it to port 80 and 443.
+#description     :Generates SSL certs for nginx automatically and proxies it to port 80 and 443.
 #author		 :knyzorg
 #date            :1498084333
 #version         :0.1    
 #usage		 :bash secureproxy.sh
-#notes           :Assumes availability of nginx in /etc/nginx/, the 
-Debian-like environment (Easy to configure for RHEL) and certbot.
+#notes           :Assumes availability of nginx in /etc/nginx/, the Debian-like environment (Easy to configure for RHEL) and certbot.
 #bash_version    :4.4.12
 #==============================================================================
 
