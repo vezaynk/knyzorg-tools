@@ -60,8 +60,7 @@ server {
 " > /etc/nginx/sites-available/ssl.$DOMAIN.conf
 echo "[+] Enable configuration"
 ln -s /etc/nginx/sites-available/$DOMAIN.conf /etc/nginx/sites-enabled/
-ln -s /etc/nginx/sites-available/ssl.$DOMAIN.conf 
-/etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/ssl.$DOMAIN.conf /etc/nginx/sites-enabled/
 
 echo "[+] Start NGINX service"
 service nginx start
