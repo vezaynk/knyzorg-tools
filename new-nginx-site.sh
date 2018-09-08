@@ -54,8 +54,8 @@ echo "server {
 
 		# For WebSockets
 		proxy_http_version 1.1;
-		proxy_set_header Upgrade $http_upgrade;
-		proxy_set_header Connection $http_connection;
+		proxy_set_header Upgrade \$http_upgrade;
+		proxy_set_header Connection \$http_connection;
 	}
 }
 " > /etc/nginx/sites-available/$DOMAIN.conf
