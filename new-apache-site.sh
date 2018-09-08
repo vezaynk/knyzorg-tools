@@ -8,7 +8,7 @@ Usage:
 
 if [ -z "$USER" ]; then echo "Please supply user name!
 Usage:
-        ./new-apache-site.sh [domain] [port]
+        ./new-apache-site.sh [domain] [user]
 "; exit 1; else echo "Assigning to user $USER"; fi
 
 
