@@ -21,8 +21,7 @@ if [ ! -f /etc/letsencrypt/live/$DOMAIN/fullchain.pem ]; then
 fi
 
 echo "[+] Create nginx conf file"
-echo "
-upstream virtualService {
+echo "upstream virtualService {
 	server 127.0.0.1:$PORT
 	server 127.0.0.1:8080
 }
@@ -65,7 +64,7 @@ server {
 }
 " > /etc/nginx/sites-available/$DOMAIN.conf
 echo "[+] Running nginx configuration test"
-if nginx -t 2>/dev/null; then 
+if nginx -t; then 
 	echo "[+] NGINX configuration passed."; 
 else
 	echo "[-] NGINX validation failed. Removing site.";
