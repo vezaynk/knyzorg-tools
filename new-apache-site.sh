@@ -24,7 +24,7 @@ echo "<VirtualHost *:8080>
         AssignUserId $USER www-data
     </IfModule>
 </VirtualHost>
-" > /etc/apache/sites-available/$DOMAIN.conf
+" > /etc/apache2/sites-available/$DOMAIN.conf
 echo "[+] Running apache configuration test"
 if apachectl configtest 2>/dev/null; then 
 	echo "[+] apache configuration passed."; 
