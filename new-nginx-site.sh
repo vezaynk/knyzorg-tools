@@ -45,9 +45,9 @@ echo "server {
 echo "[+] Running nginx configuration test"
 if nginx -t 2>/dev/null; then 
 	echo "[+] NGINX configuration passed."; 
-	rm /etc/nginx/sites-available/$DOMAIN.conf
 else
 	echo "[-] NGINX validation failed. Removing site.";
+	rm /etc/nginx/sites-available/$DOMAIN.conf
 	exit 1;
 fi
 
