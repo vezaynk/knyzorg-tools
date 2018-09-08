@@ -22,8 +22,8 @@ fi
 
 echo "[+] Create nginx conf file"
 echo "upstream virtualService {
-	server 127.0.0.1:$PORT
-	server 127.0.0.1:8080
+	server 127.0.0.1:$PORT;
+	server 127.0.0.1:8080;
 }
 server {
 	# Configure Listen Ports
