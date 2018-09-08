@@ -22,23 +22,40 @@ fi
 
 echo "[+] Create nginx conf file"
 echo "server {
+	# Configure Listen Ports
 	listen 80;
 	listen [::]:80;
 	listen 443 ssl;
 	listen [::]:443 ssl;
+
+	# Use both non-www and www variants
 	server_name $DOMAIN www.$DOMAIN;
+
+	# Add HSTS headers to encourage SSL
 	add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;
+
+	# Add SSL certificates
 	ssl_certificate /etc/letsencrypt/live/$DOMAIN/fullchain.pem;
 	ssl_certificate_key /etc/letsencrypt/live/$DOMAIN/privkey.pem;
+
+	# Add Let's Encrypt Support
 	location /.well-known {
 		allow all;
 		proxy_pass http://localhost:9999/.well-known;
 	}
+
+	# Reverse Proxy
 	location / {
+		# For HTTP(s)
 		proxy_set_header X-Real-IP \$remote_addr;
 		proxy_set_header X-Forwarded-For \$remote_addr;
 		proxy_set_header Host \$host;
 		proxy_pass http://localhost:$PORT;
+
+		# For WebSockets
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection $http_connection;
 	}
 }
 " > /etc/nginx/sites-available/$DOMAIN.conf
