@@ -25,6 +25,9 @@ echo "<VirtualHost *:8080>
     </IfModule>
 </VirtualHost>
 " > /etc/apache2/sites-available/$DOMAIN.conf
+
+mkdir /var/www/sites/$DOMAIN
+
 echo "[+] Running apache configuration test"
 if apachectl configtest 2>/dev/null; then 
 	echo "[+] apache configuration passed."; 
