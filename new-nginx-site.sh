@@ -21,7 +21,7 @@ if [ ! -f /etc/letsencrypt/live/$DOMAIN/fullchain.pem ]; then
 fi
 
 echo "[+] Create nginx conf file"
-echo "upstream virtualService {
+echo "upstream $DOMAIN {
 	server 127.0.0.1:$PORT;
 	server 127.0.0.1:8080;
 }
@@ -54,7 +54,7 @@ server {
 		proxy_set_header X-Real-IP \$remote_addr;
 		proxy_set_header X-Forwarded-For \$remote_addr;
 		proxy_set_header Host \$host;
-		proxy_pass http://virtualService;
+		proxy_pass http://$DOMAIN;
 
 		# For WebSockets
 		proxy_http_version 1.1;
