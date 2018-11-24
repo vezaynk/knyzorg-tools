@@ -38,7 +38,7 @@ else
 fi
 
 echo "[+] Enable site"
-ln -s /etc/apache2/sites-available/$DOMAIN.conf /etc/apache2/sites-enabled/
-ln -s /var/www/sites/$DOMAIN /home/$USER/$DOMAIN
+ln -sf /etc/apache2/sites-available/$DOMAIN.conf /etc/apache2/sites-enabled/
+ln -sf /var/www/sites/$DOMAIN /home/$USER/
 echo "[+] Reload apache2 service"
 service apache2 reload

@@ -51,9 +51,10 @@ server {
 	# Reverse Proxy
 	location / {
 		# For HTTP(s)
-		proxy_set_header X-Real-IP \$remote_addr;
 		proxy_set_header X-Forwarded-For \$remote_addr;
 		proxy_set_header Host \$host;
+		proxy_set_header Default-Port $PORT;
+		proxy_pass_request_headers on;
 		proxy_pass http://$DOMAIN;
 
 		# For WebSockets
@@ -73,7 +74,7 @@ else
 fi
 
 echo "[+] Enable site"
-ln -s /etc/nginx/sites-available/$DOMAIN.conf /etc/nginx/sites-enabled/
+ln -sf /etc/nginx/sites-available/$DOMAIN.conf /etc/nginx/sites-enabled/
 
 echo "[+] Reload NGINX service"
 service nginx reload
