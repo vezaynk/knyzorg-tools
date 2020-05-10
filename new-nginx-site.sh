@@ -43,9 +43,9 @@ server {
 	ssl_certificate_key /etc/letsencrypt/live/$DOMAIN/privkey.pem;
 
 	# Add Let's Encrypt Support
-	location /.well-known {
+	location /.well-known/acme-challenge {
 		allow all;
-		proxy_pass http://localhost:9999/.well-known;
+		proxy_pass http://localhost:9999/.well-known/acme-challenge;
 	}
 
 	# Reverse Proxy
