@@ -27,8 +27,6 @@ echo "upstream $DOMAIN {
 }
 server {
 	# Configure Listen Ports
-	listen 80;
-	listen [::]:80;
 	listen 443 ssl;
 	listen [::]:443 ssl;
 
@@ -41,12 +39,6 @@ server {
 	# Add SSL certificates
 	ssl_certificate /etc/letsencrypt/live/$DOMAIN/fullchain.pem;
 	ssl_certificate_key /etc/letsencrypt/live/$DOMAIN/privkey.pem;
-
-	# Add Let's Encrypt Support
-	location /.well-known/acme-challenge {
-		allow all;
-		proxy_pass http://localhost:9999/.well-known/acme-challenge;
-	}
 
 	# Reverse Proxy
 	location / {
